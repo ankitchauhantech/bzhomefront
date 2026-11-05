@@ -243,12 +243,14 @@ export function DesignOne() {
             {/* 50% Left: 4 Images Mosaic Grid */}
             <div className="lg:col-span-6 relative">
               <div className="grid grid-cols-2 gap-4">
-                {/* Image 1: Dallas Veterans */}
+                {/* Image 1: Dallas Veterans Leadership */}
                 <div className="rounded-3xl overflow-hidden shadow-md border border-slate-200 h-48 sm:h-60 group relative bg-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80"
-                    alt="Bravo Zulu Veterans in Dallas"
-                    onError={handleImageFallback}
+                    src="/images/site-images/291dc655cf052cf37f875d1849678e8c_983x1025_0x0_983x1280_crop.jpg"
+                    alt="Bravo Zulu Veterans Leadership in Dallas"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://bzhomefront.com/gallery_gen/291dc655cf052cf37f875d1849678e8c_983x1025_0x0_983x1280_crop.jpg";
+                    }}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   />
@@ -257,20 +259,24 @@ export function DesignOne() {
                 {/* Image 2: Buffalo Soldiers */}
                 <div className="rounded-3xl overflow-hidden shadow-md border border-slate-200 h-48 sm:h-60 group relative bg-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=800&q=80"
+                    src="/images/site-images/06cde236fbe9febdbd1d6855caaadbe9_676x902_fit.jpeg"
                     alt="Dallas County Buffalo Soldiers"
-                    onError={handleImageFallback}
+                    onError={(e) => {
+                      e.currentTarget.src = "https://bzhomefront.com/gallery_gen/06cde236fbe9febdbd1d6855caaadbe9_676x902_fit.jpeg";
+                    }}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   />
                 </div>
 
-                {/* Image 3: Direct Relief */}
+                {/* Image 3: Direct Relief & Help Center */}
                 <div className="rounded-3xl overflow-hidden shadow-md border border-slate-200 h-48 sm:h-60 group relative bg-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80"
-                    alt="Community Feeding & Care Kits"
-                    onError={handleImageFallback}
+                    src="/images/site-images/56166a2dcf2cea021b78db9216473a71.jpg"
+                    alt="Veteran Help Center & Advocacy"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://bzhomefront.com/gallery/56166a2dcf2cea021b78db9216473a71.jpg";
+                    }}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   />
@@ -279,9 +285,11 @@ export function DesignOne() {
                 {/* Image 4: Youth Horsemanship */}
                 <div className="rounded-3xl overflow-hidden shadow-md border border-slate-200 h-48 sm:h-60 group relative bg-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80"
+                    src="/images/site-images/fc9f4e3b8f62ff60107c59b8277760e7_fit.jpeg"
                     alt="Camp Fort 24th Youth Horsemanship"
-                    onError={handleImageFallback}
+                    onError={(e) => {
+                      e.currentTarget.src = "https://bzhomefront.com/gallery_gen/fc9f4e3b8f62ff60107c59b8277760e7_fit.jpeg";
+                    }}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   />

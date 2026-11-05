@@ -237,44 +237,139 @@ export const taxExemptionTiers = [
 
 export const galleryImages = [
   {
-    url: "https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=1000&q=80",
-    title: "Bill Pickett Invitational Rodeo & Buffalo Soldiers",
-    category: "Heritage & Living History",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1000&q=80",
-    title: "City of Fort Worth City Council Commemoration",
-    category: "Civic Honors",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1508873696983-2df5703bc20d?auto=format&fit=crop&w=1000&q=80",
-    title: "Peoples' Memorial Park Cemetery Restoration",
-    category: "Honoring Fallen Heroes",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1000&q=80",
-    title: "Camp Fort 24th Youth Horsemanship",
-    category: "Youth Leadership",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80",
-    title: "South Dallas Veteran Hunger Relief & Hot Meals",
+    url: "/images/site-images/BZ_Street_Feeding_Flyer_JPEG-ts1699561952.png",
+    fallbackUrl: "https://bzhomefront.com/gallery/BZ%20Street%20Feeding%20Flyer%20JPEG-ts1699561952.png",
+    title: "South Dallas Veteran Street Feeding & Hygiene Care Drive Flyer",
     category: "Community Outreach",
   },
   {
-    url: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=1000&q=80",
-    title: "Urban Veteran Victory Garden Harvest",
-    category: "Community Agriculture",
+    url: "/images/site-images/80a86e6a5d7f4013eda1ee3d87ccd8b4_778x892_fit.jpg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/80a86e6a5d7f4013eda1ee3d87ccd8b4_778x892_fit.jpg",
+    title: "Bravo Zulu Community Assembly & Service Call Announcement",
+    category: "Community Outreach",
   },
   {
-    url: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1000&q=80",
-    title: "Honor Flight Washington D.C. Memorial Tour",
-    category: "Senior Veterans",
+    url: "/images/site-images/image8-ts1756167479.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery/image8-ts1756167479.jpeg",
+    title: "Juneteenth Bill Pickett Invitational Rodeo Grand Entry on Horseback",
+    category: "Living History",
   },
   {
-    url: "https://images.unsplash.com/photo-1579208575657-c595a053b977?auto=format&fit=crop&w=1000&q=80",
-    title: "Texas Veteran Property Tax Advocacy Workshop",
-    category: "Benefits & Rights",
+    url: "/images/site-images/image3-ts1756167481.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery/image3-ts1756167481.jpeg",
+    title: "Dallas County Buffalo Soldiers Cavalry Regiment Formation",
+    category: "Living History",
+  },
+  {
+    url: "/images/site-images/image18-ts1756167481.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery/image18-ts1756167481.jpeg",
+    title: "Veterans Unite Community Service Day & Fellowship",
+    category: "Community Outreach",
+  },
+  {
+    url: "/images/site-images/fc9f4e3b8f62ff60107c59b8277760e7_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/fc9f4e3b8f62ff60107c59b8277760e7_fit.jpeg",
+    title: "Camp Fort 24th Youth Horsemanship & Leadership Encampment",
+    category: "Youth Leadership",
+  },
+  {
+    url: "/images/site-images/c244df8cfdbb33e4fdef4ec593f61b4b_674x898_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/c244df8cfdbb33e4fdef4ec593f61b4b_674x898_fit.jpeg",
+    title: "Peoples' Memorial Cemetery: Perpetual Care for 600 Fallen Heroes",
+    category: "Honoring Fallen",
+  },
+  {
+    url: "/images/site-images/06cde236fbe9febdbd1d6855caaadbe9_676x902_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/06cde236fbe9febdbd1d6855caaadbe9_676x902_fit.jpeg",
+    title: "Historic Cavalry Regalia & Living History Presentation",
+    category: "Living History",
+  },
+  {
+    url: "/images/site-images/IMG_9856-ts1709858934.webp",
+    fallbackUrl: "https://bzhomefront.com/gallery/IMG_9856-ts1709858934.webp",
+    title: "Field Operations & Veterans Benefits Resource Assistance",
+    category: "Benefits & Support",
+  },
+  {
+    url: "/images/site-images/2c492f741fa6e529f70ab92cfafca3aa_898x898_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/2c492f741fa6e529f70ab92cfafca3aa_898x898_fit.jpeg",
+    title: "South Dallas Food Security & Emergency Provisions",
+    category: "Community Outreach",
+  },
+  {
+    url: "/images/site-images/IMG_9867-ts1709858934.webp",
+    fallbackUrl: "https://bzhomefront.com/gallery/IMG_9867-ts1709858934.webp",
+    title: "Youth Cadets Horsemanship & Discipline Session",
+    category: "Youth Leadership",
+  },
+  {
+    url: "/images/site-images/3797c549ed6b86ff4251565c355157b7_674x898_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/3797c549ed6b86ff4251565c355157b7_674x898_fit.jpeg",
+    title: "Alliance Fellowship & Veteran Brotherhood Assembly",
+    category: "Community Outreach",
+  },
+];
+
+export const aboutImages = [
+  {
+    url: "/images/site-images/291dc655cf052cf37f875d1849678e8c_983x1025_0x0_983x1280_crop.jpg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/291dc655cf052cf37f875d1849678e8c_983x1025_0x0_983x1280_crop.jpg",
+    title: "Founded & Operated by Veterans - BZ Leadership",
+    role: "Leadership & Vision",
+  },
+  {
+    url: "/images/site-images/48b2b89ba633dfbd50093fc837fcfbb4_1045x853_235x0_1280x853_crop.jpg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/48b2b89ba633dfbd50093fc837fcfbb4_1045x853_235x0_1280x853_crop.jpg",
+    title: "Brotherhood in Arms & Lifelong Service",
+    role: "Military Transition",
+  },
+  {
+    url: "/images/site-images/56166a2dcf2cea021b78db9216473a71.jpg",
+    fallbackUrl: "https://bzhomefront.com/gallery/56166a2dcf2cea021b78db9216473a71.jpg",
+    title: "Veteran Help Center & Re-Entry Advocacy",
+    role: "Help Center & Benefits",
+  },
+  {
+    url: "/images/site-images/fc9f4e3b8f62ff60107c59b8277760e7_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/fc9f4e3b8f62ff60107c59b8277760e7_fit.jpeg",
+    title: "Camp Fort 24th Youth Horsemanship",
+    role: "Youth Cadets",
+  },
+  {
+    url: "/images/site-images/c244df8cfdbb33e4fdef4ec593f61b4b_674x898_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/c244df8cfdbb33e4fdef4ec593f61b4b_674x898_fit.jpeg",
+    title: "Peoples' Memorial Cemetery 600 Fallen Heroes",
+    role: "Perpetual Care",
+  },
+  {
+    url: "/images/site-images/06cde236fbe9febdbd1d6855caaadbe9_676x902_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/06cde236fbe9febdbd1d6855caaadbe9_676x902_fit.jpeg",
+    title: "Dallas County Buffalo Soldiers Lancaster Chapter",
+    role: "Living History",
+  },
+  {
+    url: "/images/site-images/IMG_9856-ts1709858934.webp",
+    fallbackUrl: "https://bzhomefront.com/gallery/IMG_9856-ts1709858934.webp",
+    title: "Field Outreach & Veterans Support Desk",
+    role: "Direct Outreach",
+  },
+  {
+    url: "/images/site-images/2c492f741fa6e529f70ab92cfafca3aa_898x898_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/2c492f741fa6e529f70ab92cfafca3aa_898x898_fit.jpeg",
+    title: "Community Food Security & Emergency Provisions",
+    role: "Community Care",
+  },
+  {
+    url: "/images/site-images/IMG_9867-ts1709858934.webp",
+    fallbackUrl: "https://bzhomefront.com/gallery/IMG_9867-ts1709858934.webp",
+    title: "Cadets Equestrian & Leadership Coaching",
+    role: "Equine Therapy",
+  },
+  {
+    url: "/images/site-images/3797c549ed6b86ff4251565c355157b7_674x898_fit.jpeg",
+    fallbackUrl: "https://bzhomefront.com/gallery_gen/3797c549ed6b86ff4251565c355157b7_674x898_fit.jpeg",
+    title: "Veterans Community Assembly & Unity",
+    role: "Brotherhood",
   },
 ];
 

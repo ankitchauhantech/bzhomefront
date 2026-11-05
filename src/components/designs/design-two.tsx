@@ -232,13 +232,15 @@ export function DesignTwo() {
       <section id="about" className="py-16 md:py-24 bg-white border-b border-slate-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column: Clean Image */}
+            {/* Left Column: Clean Image from bzhomefront.com/About-us */}
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-2xl bg-slate-900 group">
                 <img
-                  src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1000&q=80"
-                  alt="Bravo Zulu Homefront Alliance Veterans"
-                  onError={handleImageFallback}
+                  src="/images/site-images/291dc655cf052cf37f875d1849678e8c_983x1025_0x0_983x1280_crop.jpg"
+                  alt="Bravo Zulu Homefront Alliance Veterans Leadership"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://bzhomefront.com/gallery_gen/291dc655cf052cf37f875d1849678e8c_983x1025_0x0_983x1280_crop.jpg";
+                  }}
                   loading="lazy"
                   className="w-full h-[460px] sm:h-[520px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
