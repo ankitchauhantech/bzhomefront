@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 220 40% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 12%;
+    --primary: 220 60% 20%;        /* navy */
+    --primary-foreground: 40 33% 97%;
+    --secondary: 38 70% 50%;       /* brass */
+    --secondary-foreground: 220 40% 12%;
+    --muted: 40 20% 92%;
+    --muted-foreground: 220 10% 40%;
+    --accent: 0 60% 40%;           /* brick red */
+    --accent-foreground: 0 0% 100%;
+    --border: 40 15% 85%;
+    --ring: 220 60% 20%;
+    --radius: 0.5rem;
+  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; }
+  h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; }
+}
