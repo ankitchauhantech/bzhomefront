@@ -38,7 +38,7 @@ export const site = {
   name: "Bravo Zulu Homefront Alliance",
   shortName: "BZ Homefront",
   codeName: "BZ Alliance",
-  logo: "https://bzhomefront.com/gallery_gen/128fb74b5faaf297a68b38ca9dad76bd_fit.png",
+  logo: "/logo.png",
   localLogo: "/logo.png",
   tagline: "Veterans Unite: Impact Beyond Service",
   motto: "Veterans Unite: Impact Beyond Service.",

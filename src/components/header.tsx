@@ -58,8 +58,12 @@ export function Header() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-950 flex items-center justify-center text-amber-400 font-extrabold text-lg shadow-md border border-amber-500/30 group-hover:scale-105 transition-transform">
-            BZ
+          <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white shadow-md border-2 border-amber-500/50 group-hover:scale-105 transition-transform shrink-0 flex items-center justify-center p-0.5">
+            <img
+              src="/logo.png"
+              alt={site.name}
+              className="w-full h-full object-contain"
+            />
           </div>
           <div>
             <span className="font-serif text-lg md:text-xl font-extrabold text-slate-950 block leading-tight tracking-tight">

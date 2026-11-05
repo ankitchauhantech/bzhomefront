@@ -8,6 +8,9 @@ import { LayoutProvider } from "@/context/layout-context";
 export const metadata: Metadata = {
   title: "Bravo Zulu Homefront Alliance | Dallas, Texas",
   description: "Veterans Unite: Impact Beyond Service. Official IRS 501(c)(19) Veterans Organization.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

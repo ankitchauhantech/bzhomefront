@@ -12,8 +12,12 @@ export function Footer() {
           {/* Col 1: Brand & Status */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-900 to-indigo-950 flex items-center justify-center text-amber-400 font-extrabold text-base border border-amber-500/30">
-                BZ
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-white shadow-md border-2 border-amber-500/50 shrink-0 flex items-center justify-center p-0.5">
+                <img
+                  src="/logo.png"
+                  alt={site.name}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className="font-serif text-base font-bold text-white block leading-tight">
