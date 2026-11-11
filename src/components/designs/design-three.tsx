@@ -395,23 +395,64 @@ export function DesignThree() {
         </div>
       </section>
 
-      {/* Activities & Programs: Community Events Current & Past (Autoplay Slider) */}
-      <section className="py-16 bg-[#FBF9F5] border-t border-b border-stone-300 font-sans">
-        <div className="container mx-auto px-4 max-w-6xl space-y-10">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-widest text-red-900">
+      {/* Activities & Programs: Community Events Current & Past (Autoplay Slider with Custom Decorative Shapes) */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-[#F3ECE1] via-[#EFE6D5] to-[#F3ECE1] border-t-2 border-b-2 border-stone-300 font-sans relative overflow-hidden">
+        {/* Subtle dot pattern texture */}
+        <div 
+          className="absolute inset-0 opacity-[0.15] pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle, #78350f 1.2px, transparent 1.2px)`,
+            backgroundSize: "24px 24px"
+          }}
+        />
+
+        {/* Top Decorative Curved SVG Shape Divider */}
+        <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-8 sm:h-12 text-[#FAF7F2] fill-current">
+            <path d="M0,0 C300,50 900,50 1200,0 L1200,0 L0,0 Z"></path>
+          </svg>
+        </div>
+
+        {/* Bottom Decorative Curved SVG Shape Divider */}
+        <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none rotate-180">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-8 sm:h-12 text-[#FAF7F2] fill-current">
+            <path d="M0,0 C300,50 900,50 1200,0 L1200,0 L0,0 Z"></path>
+          </svg>
+        </div>
+
+        {/* Floating Background Ambient Gradient Shapes & Orbs */}
+        <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-gradient-to-br from-amber-400/25 to-orange-500/10 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -right-20 w-[450px] h-[450px] rounded-full bg-gradient-to-tl from-[#223788]/20 to-blue-500/10 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[400px] bg-amber-200/25 rounded-full blur-[110px] pointer-events-none" />
+
+        {/* Concentric Geometric Watermark Rings & Star Shapes */}
+        <svg className="absolute -right-24 top-1/2 -translate-y-1/2 w-96 h-96 text-stone-900/[0.05] pointer-events-none" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="90" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+          <circle cx="100" cy="100" r="70" stroke="currentColor" strokeWidth="1.5" />
+          <circle cx="100" cy="100" r="50" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 2" />
+          <polygon points="100,20 120,80 180,80 130,120 150,180 100,140 50,180 70,120 20,80 80,80" stroke="currentColor" strokeWidth="1" />
+        </svg>
+        <svg className="absolute -left-24 top-1/3 w-96 h-96 text-stone-900/[0.05] pointer-events-none" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="90" stroke="currentColor" strokeWidth="1.5" strokeDasharray="6 6" />
+          <circle cx="100" cy="100" r="70" stroke="currentColor" strokeWidth="1.5" />
+          <circle cx="100" cy="100" r="50" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
+        </svg>
+
+        <div className="container mx-auto px-4 max-w-6xl space-y-10 relative z-10">
+          <div className="text-center space-y-3 max-w-2xl mx-auto">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-red-900/10 text-red-900 border border-red-900/20 shadow-xs">
               Activities &amp; Programs
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-stone-950 font-serif">
+            <h2 className="text-3xl md:text-5xl font-black text-stone-950 font-serif tracking-tight">
               Community Events: Current &amp; Past
             </h2>
-            <p className="text-stone-600 text-sm leading-relaxed">
+            <p className="text-stone-700 text-sm leading-relaxed max-w-xl mx-auto font-medium">
               Click on any event card below to open its dedicated event story and photo gallery.
             </p>
           </div>
 
           {/* Autoplay Event Cards Slider Viewport */}
-          <div className="overflow-hidden rounded-3xl">
+          <div className="overflow-hidden rounded-3xl p-1">
             <div
               className="flex transition-transform duration-500 ease-out -mx-3"
               style={{
@@ -426,7 +467,7 @@ export function DesignThree() {
                 >
                   <Link
                     href={`/events/${evt.id}`}
-                    className="rounded-3xl overflow-hidden bg-white border border-stone-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between h-full group cursor-pointer"
+                    className="rounded-3xl overflow-hidden bg-white border border-stone-300 shadow-md hover:shadow-2xl hover:border-amber-500 transition-all flex flex-col justify-between h-full group cursor-pointer transform hover:-translate-y-1"
                   >
                     <div>
                       <div className="relative h-52 overflow-hidden bg-stone-100">
@@ -477,7 +518,7 @@ export function DesignThree() {
                 type="button"
                 onClick={() => setEventIndex(idx)}
                 className={`h-2 rounded-full transition-all cursor-pointer ${
-                  eventIndex === idx ? "w-6 bg-red-900" : "w-2 bg-stone-300 hover:bg-stone-400"
+                  eventIndex === idx ? "w-6 bg-red-900" : "w-2 bg-stone-400 hover:bg-stone-500"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
