@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { site, events, galleryImages } from "@/data/site";
 import {
   Star,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ArrowRight,
   MapPin,
   Calendar,
@@ -33,6 +35,19 @@ import { LightboxGallery } from "@/components/lightbox-gallery";
 export function DesignThree() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [heritageIndex, setHeritageIndex] = useState(0);
+  const [heritagePerView, setHeritagePerView] = useState(3);
+
+  useEffect(() => {
+    const updateHeritagePerView = () => {
+      if (window.innerWidth < 640) setHeritagePerView(1);
+      else if (window.innerWidth < 1024) setHeritagePerView(2);
+      else setHeritagePerView(3);
+    };
+    updateHeritagePerView();
+    window.addEventListener("resize", updateHeritagePerView);
+    return () => window.removeEventListener("resize", updateHeritagePerView);
+  }, []);
 
   const heritageStories = [
     {
@@ -56,7 +71,23 @@ export function DesignThree() {
       image: "/images/site-images/fc9f4e3b8f62ff60107c59b8277760e7_fit.jpeg",
       fallback: "https://bzhomefront.com/gallery_gen/fc9f4e3b8f62ff60107c59b8277760e7_fit.jpeg",
     },
+    {
+      year: "Honor Flight Network",
+      title: "Veterans Honor Flight Pilgrimage",
+      desc: "Nominating and escorting WWII, Korean War, and Vietnam veterans to Washington, D.C. national memorials at zero cost to the veteran, honoring their sacred service.",
+      image: "/images/site-images/image18-ts1756167481.jpeg",
+      fallback: "https://bzhomefront.com/gallery/image18-ts1756167481.jpeg",
+    },
+    {
+      year: "South Dallas Outreach",
+      title: "Veterans Food Security & Street Feeding",
+      desc: "Direct mobile feeding missions delivering hot meals, winter coats, hygiene packs, and VA claims navigation directly to homeless veterans across Dallas.",
+      image: "/images/site-images/2c492f741fa6e529f70ab92cfafca3aa_898x898_fit.jpeg",
+      fallback: "https://bzhomefront.com/gallery_gen/2c492f741fa6e529f70ab92cfafca3aa_898x898_fit.jpeg",
+    },
   ];
+
+  const maxHeritageIndex = Math.max(0, heritageStories.length - heritagePerView);
 
   const benefitsFaq = [
     {
@@ -344,66 +375,117 @@ export function DesignThree() {
         </div>
       </section>
 
-      {/* 5. Living History & Heritage Section */}
+      {/* 5. Living History & Heritage Section (5 Cards Slider - Scrolls 1 by 1) */}
       <section className="py-16 container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-12 space-y-2">
-          <span className="text-xs font-sans font-bold uppercase tracking-widest text-red-900">
-            Living History In Action
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-stone-950 font-serif">
-            Preserving Valor, Educating the Next Generation
-          </h2>
-          <p className="text-stone-600 text-sm font-sans max-w-xl mx-auto">
-            Our mission carries forward the storied legacy of the Buffalo Soldiers and honors those laid to rest in sacred Texas soil.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div className="space-y-2">
+            <span className="text-xs font-sans font-bold uppercase tracking-widest text-red-900">
+              Living History In Action
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-stone-950 font-serif">
+              Preserving Valor, Educating the Next Generation
+            </h2>
+            <p className="text-stone-600 text-sm font-sans max-w-xl">
+              Our mission carries forward the storied legacy of the Buffalo Soldiers, honors those laid to rest in sacred Texas soil, and uplifts veterans across the state.
+            </p>
+          </div>
+
+          {/* Slider Controls */}
+          <div className="flex items-center gap-3 shrink-0">
+            <span className="text-xs font-bold text-stone-600 font-sans">
+              {heritageIndex + 1} - {Math.min(heritageIndex + heritagePerView, heritageStories.length)} of {heritageStories.length}
+            </span>
+            <button
+              type="button"
+              onClick={() => setHeritageIndex((prev) => (prev > 0 ? prev - 1 : maxHeritageIndex))}
+              aria-label="Previous card"
+              className="w-10 h-10 rounded-full bg-white border border-stone-300 shadow-sm hover:bg-stone-100 active:scale-95 flex items-center justify-center text-stone-800 transition-all cursor-pointer"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setHeritageIndex((prev) => (prev < maxHeritageIndex ? prev + 1 : 0))}
+              aria-label="Next card"
+              className="w-10 h-10 rounded-full bg-white border border-stone-300 shadow-sm hover:bg-stone-100 active:scale-95 flex items-center justify-center text-stone-800 transition-all cursor-pointer"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {heritageStories.map((h, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl overflow-hidden border border-stone-300 shadow-sm flex flex-col justify-between group"
-            >
-              <div>
-                <div className="relative h-48 overflow-hidden bg-stone-100 border-b border-stone-200">
-                  <img
-                    src={h.image}
-                    alt={h.title}
-                    onError={(e) => {
-                      if (h.fallback && e.currentTarget.src !== h.fallback) {
-                        e.currentTarget.src = h.fallback;
-                      }
-                    }}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <span className="absolute bottom-2 left-2 px-2.5 py-1 bg-stone-950 text-white text-[10px] font-sans font-bold rounded">
-                    {h.year}
-                  </span>
-                </div>
+        {/* 5-Card Slider Viewport & Track */}
+        <div className="overflow-hidden rounded-2xl">
+          <div
+            className="flex transition-transform duration-500 ease-out -mx-3"
+            style={{
+              transform: `translateX(-${heritageIndex * (100 / heritagePerView)}%)`,
+            }}
+          >
+            {heritageStories.map((h, i) => (
+              <div
+                key={i}
+                style={{ width: `${100 / heritagePerView}%` }}
+                className="shrink-0 px-3"
+              >
+                <div className="bg-white rounded-2xl overflow-hidden border border-stone-300 shadow-sm flex flex-col justify-between h-full group hover:shadow-md transition-shadow">
+                  <div>
+                    <div className="relative h-48 overflow-hidden bg-stone-100 border-b border-stone-200">
+                      <img
+                        src={h.image}
+                        alt={h.title}
+                        onError={(e) => {
+                          if (h.fallback && e.currentTarget.src !== h.fallback) {
+                            e.currentTarget.src = h.fallback;
+                          }
+                        }}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <span className="absolute bottom-2 left-2 px-2.5 py-1 bg-stone-950 text-white text-[10px] font-sans font-bold rounded">
+                        {h.year}
+                      </span>
+                    </div>
 
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-stone-950 mb-2 font-serif">{h.title}</h3>
-                  <p className="text-xs text-stone-600 leading-relaxed font-sans">{h.desc}</p>
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-stone-950 mb-2 font-serif">{h.title}</h3>
+                      <p className="text-xs text-stone-600 leading-relaxed font-sans">{h.desc}</p>
+                    </div>
+                  </div>
+
+                  <div className="p-6 pt-0 font-sans">
+                    <Link
+                      href="/gallery"
+                      className="text-xs font-bold text-red-900 hover:underline inline-flex items-center gap-1"
+                    >
+                      <span>View photo documentation</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
 
-              <div className="p-6 pt-0 font-sans">
-                <Link
-                  href="/gallery"
-                  className="text-xs font-bold text-red-900 hover:underline inline-flex items-center gap-1"
-                >
-                  <span>View photo documentation</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
+        {/* Bottom Pagination Dots */}
+        <div className="flex items-center justify-center gap-1.5 mt-6">
+          {Array.from({ length: maxHeritageIndex + 1 }).map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setHeritageIndex(idx)}
+              className={`h-2 rounded-full transition-all cursor-pointer ${
+                heritageIndex === idx ? "w-6 bg-red-900" : "w-2 bg-stone-300 hover:bg-stone-400"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
           ))}
         </div>
       </section>
 
-      {/* 6. Living History Photo Gallery Grid (with Lightbox) */}
+      {/* 6. Living History Photo Gallery Grid (with Lightbox Slider: 4 at a time, scroll 1 by 1) */}
       <section className="py-16 bg-[#F3EDE2] border-t-2 border-b-2 border-stone-300">
-        <div className="container mx-auto px-4 max-w-6xl space-y-8">
+        <div className="container mx-auto px-4 max-w-6xl space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-xs font-sans font-bold uppercase tracking-widest text-red-900">
@@ -413,7 +495,7 @@ export function DesignThree() {
                 Field Documentation &amp; Living History
               </h2>
               <p className="text-stone-600 text-xs font-sans">
-                Authentic photographic moments from bzhomefront.com/Gallery/
+                Authentic photographic moments from bzhomefront.com/Gallery/ • 4 photos per view, scroll 1 by 1
               </p>
             </div>
             <Link
@@ -425,8 +507,8 @@ export function DesignThree() {
             </Link>
           </div>
 
-          {/* Lightbox Gallery Grid */}
-          <LightboxGallery images={galleryImages.slice(0, 8)} columns={4} />
+          {/* Lightbox Gallery Slider */}
+          <LightboxGallery images={galleryImages} slider={true} />
         </div>
       </section>
 
