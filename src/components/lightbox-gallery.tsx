@@ -12,7 +12,10 @@ interface LightboxGalleryProps {
 export function LightboxGallery({ images = galleryImages, columns = 4, slider = false }: LightboxGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [sliderIndex, setSliderIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
   const [itemsPerView, setItemsPerView] = useState(4);
+
+  const loopImages = slider ? [...images, ...images, ...images] : images;
 
   useEffect(() => {
     if (!slider) return;
@@ -26,23 +29,31 @@ export function LightboxGallery({ images = galleryImages, columns = 4, slider = 
     return () => window.removeEventListener("resize", updateItems);
   }, [slider]);
 
-  const maxSliderIndex = Math.max(0, images.length - itemsPerView);
-
-  // Autoplay for Gallery Slider
+  // Autoplay for Gallery Slider with Infinite Continuous Loop
   useEffect(() => {
     if (!slider) return;
     const timer = setInterval(() => {
-      setSliderIndex((prev) => (prev < maxSliderIndex ? prev + 1 : 0));
+      setIsTransitioning(true);
+      setSliderIndex((prev) => prev + 1);
     }, 3000);
     return () => clearInterval(timer);
-  }, [slider, maxSliderIndex]);
+  }, [slider]);
+
+  const handleSliderTransitionEnd = () => {
+    if (sliderIndex >= images.length) {
+      setIsTransitioning(false);
+      setSliderIndex(0);
+    }
+  };
 
   const nextSlide = () => {
-    setSliderIndex((prev) => (prev < maxSliderIndex ? prev + 1 : 0));
+    setIsTransitioning(true);
+    setSliderIndex((prev) => prev + 1);
   };
 
   const prevSlide = () => {
-    setSliderIndex((prev) => (prev > 0 ? prev - 1 : maxSliderIndex));
+    setIsTransitioning(true);
+    setSliderIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
   };
 
   const openLightbox = (index: number) => {
@@ -83,31 +94,34 @@ export function LightboxGallery({ images = galleryImages, columns = 4, slider = 
   return (
     <div>
       {slider ? (
-        /* Slider Mode: 4 images at a time, autoplay scroll 1 by 1 */
+        /* Slider Mode: 4 images at a time, infinite continuous loop */
         <div className="space-y-4">
           {/* Slider track viewport */}
           <div className="overflow-hidden rounded-2xl">
             <div
-              className="flex transition-transform duration-500 ease-out -mx-2"
+              onTransitionEnd={handleSliderTransitionEnd}
+              className={`flex -mx-2 ${
+                isTransitioning ? "transition-transform duration-500 ease-out" : ""
+              }`}
               style={{
                 transform: `translateX(-${sliderIndex * (100 / itemsPerView)}%)`,
               }}
             >
-              {images.map((img, i) => (
+              {loopImages.map((img, i) => (
                 <div
-                  key={i}
+                  key={`${img.url}-${i}`}
                   style={{ width: `${100 / itemsPerView}%` }}
                   className="shrink-0 px-2"
                 >
                   <div
-                    onClick={() => openLightbox(i)}
+                    onClick={() => openLightbox(i % images.length)}
                     className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 cursor-pointer border border-slate-200/90 shadow-sm hover:shadow-lg transition-all"
                     role="button"
                     tabIndex={0}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
-                        openLightbox(i);
+                        openLightbox(i % images.length);
                       }
                     }}
                     aria-label={`View full photo: ${img.title}`}
@@ -139,13 +153,16 @@ export function LightboxGallery({ images = galleryImages, columns = 4, slider = 
 
           {/* Pagination dots */}
           <div className="flex items-center justify-center gap-1.5 pt-2">
-            {Array.from({ length: maxSliderIndex + 1 }).map((_, idx) => (
+            {images.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
-                onClick={() => setSliderIndex(idx)}
+                onClick={() => {
+                  setIsTransitioning(true);
+                  setSliderIndex(idx);
+                }}
                 className={`h-2 rounded-full transition-all cursor-pointer ${
-                  sliderIndex === idx ? "w-6 bg-red-900" : "w-2 bg-stone-300 hover:bg-stone-400"
+                  sliderIndex % images.length === idx ? "w-6 bg-red-900" : "w-2 bg-stone-300 hover:bg-stone-400"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />

@@ -36,8 +36,10 @@ export function DesignThree() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [heritageIndex, setHeritageIndex] = useState(0);
+  const [heritageTransition, setHeritageTransition] = useState(true);
   const [heritagePerView, setHeritagePerView] = useState(3);
   const [eventIndex, setEventIndex] = useState(0);
+  const [eventTransition, setEventTransition] = useState(true);
   const [eventPerView, setEventPerView] = useState(3);
 
   useEffect(() => {
@@ -90,24 +92,40 @@ export function DesignThree() {
     },
   ];
 
-  const maxHeritageIndex = Math.max(0, heritageStories.length - heritagePerView);
-  const maxEventIndex = Math.max(0, events.length - eventPerView);
+  const loopHeritageStories = [...heritageStories, ...heritageStories, ...heritageStories];
+  const loopEvents = [...events, ...events, ...events];
 
-  // Autoplay for Preserving Valor 5-Card Slider
+  // Autoplay for Preserving Valor 5-Card Slider (Seamless Infinite Forward Loop)
   useEffect(() => {
     const timer = setInterval(() => {
-      setHeritageIndex((prev) => (prev < maxHeritageIndex ? prev + 1 : 0));
+      setHeritageTransition(true);
+      setHeritageIndex((prev) => prev + 1);
     }, 3500);
     return () => clearInterval(timer);
-  }, [maxHeritageIndex]);
+  }, []);
 
-  // Autoplay for Community Events Slider
+  const handleHeritageTransitionEnd = () => {
+    if (heritageIndex >= heritageStories.length) {
+      setHeritageTransition(false);
+      setHeritageIndex(0);
+    }
+  };
+
+  // Autoplay for Community Events Slider (Seamless Infinite Forward Loop)
   useEffect(() => {
     const timer = setInterval(() => {
-      setEventIndex((prev) => (prev < maxEventIndex ? prev + 1 : 0));
+      setEventTransition(true);
+      setEventIndex((prev) => prev + 1);
     }, 3500);
     return () => clearInterval(timer);
-  }, [maxEventIndex]);
+  }, []);
+
+  const handleEventTransitionEnd = () => {
+    if (eventIndex >= events.length) {
+      setEventTransition(false);
+      setEventIndex(0);
+    }
+  };
 
   const benefitsFaq = [
     {
@@ -395,8 +413,14 @@ export function DesignThree() {
         </div>
       </section>
 
-      {/* Activities & Programs: Community Events Current & Past (Autoplay Slider - No Background Color) */}
-      <section className="py-16 md:py-20 font-sans relative">
+      {/* Activities & Programs: Community Events Current & Past (Infinite Loop Autoplay Slider) */}
+      <section
+        className="py-16 md:py-24 font-sans relative overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url('/images/section-bg-img2.png'), url('https://finix.powersquall.com/home-02/wp-content/uploads/sites/23/2021/06/section-bg-img2.png')",
+        }}
+      >
         <div className="container mx-auto px-4 max-w-6xl space-y-10 relative z-10">
           <div className="text-center space-y-3 max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-widest text-red-900">
@@ -410,17 +434,20 @@ export function DesignThree() {
             </p>
           </div>
 
-          {/* Autoplay Event Cards Slider Viewport */}
+          {/* Autoplay Event Cards Slider Viewport (Seamless Loop) */}
           <div className="overflow-hidden rounded-3xl p-1">
             <div
-              className="flex transition-transform duration-500 ease-out -mx-3"
+              onTransitionEnd={handleEventTransitionEnd}
+              className={`flex -mx-3 ${
+                eventTransition ? "transition-transform duration-500 ease-out" : ""
+              }`}
               style={{
                 transform: `translateX(-${eventIndex * (100 / eventPerView)}%)`,
               }}
             >
-              {events.map((evt) => (
+              {loopEvents.map((evt, idx) => (
                 <div
-                  key={evt.id}
+                  key={`${evt.id}-${idx}`}
                   style={{ width: `${100 / eventPerView}%` }}
                   className="shrink-0 px-3"
                 >
@@ -471,13 +498,16 @@ export function DesignThree() {
 
           {/* Bottom Pagination Dots */}
           <div className="flex items-center justify-center gap-1.5 pt-2">
-            {Array.from({ length: maxEventIndex + 1 }).map((_, idx) => (
+            {events.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
-                onClick={() => setEventIndex(idx)}
+                onClick={() => {
+                  setEventTransition(true);
+                  setEventIndex(idx);
+                }}
                 className={`h-2 rounded-full transition-all cursor-pointer ${
-                  eventIndex === idx ? "w-6 bg-red-900" : "w-2 bg-stone-400 hover:bg-stone-500"
+                  eventIndex % events.length === idx ? "w-6 bg-red-900" : "w-2 bg-stone-400 hover:bg-stone-500"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
@@ -486,7 +516,7 @@ export function DesignThree() {
         </div>
       </section>
 
-      {/* 5. Living History & Heritage Section (5 Cards Autoplay Slider) */}
+      {/* 5. Living History & Heritage Section (5 Cards Infinite Loop Autoplay Slider) */}
       <section className="py-16 container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-10 space-y-2 max-w-2xl mx-auto">
           <span className="text-xs font-sans font-bold uppercase tracking-widest text-red-900">
@@ -500,17 +530,20 @@ export function DesignThree() {
           </p>
         </div>
 
-        {/* 5-Card Slider Viewport & Track */}
+        {/* 5-Card Slider Viewport & Track (Seamless Loop) */}
         <div className="overflow-hidden rounded-2xl">
           <div
-            className="flex transition-transform duration-500 ease-out -mx-3"
+            onTransitionEnd={handleHeritageTransitionEnd}
+            className={`flex -mx-3 ${
+              heritageTransition ? "transition-transform duration-500 ease-out" : ""
+            }`}
             style={{
               transform: `translateX(-${heritageIndex * (100 / heritagePerView)}%)`,
             }}
           >
-            {heritageStories.map((h, i) => (
+            {loopHeritageStories.map((h, idx) => (
               <div
-                key={i}
+                key={`${h.title}-${idx}`}
                 style={{ width: `${100 / heritagePerView}%` }}
                 className="shrink-0 px-3"
               >
@@ -555,13 +588,16 @@ export function DesignThree() {
 
         {/* Bottom Pagination Dots */}
         <div className="flex items-center justify-center gap-1.5 mt-6">
-          {Array.from({ length: maxHeritageIndex + 1 }).map((_, idx) => (
+          {heritageStories.map((_, idx) => (
             <button
               key={idx}
               type="button"
-              onClick={() => setHeritageIndex(idx)}
+              onClick={() => {
+                setHeritageTransition(true);
+                setHeritageIndex(idx);
+              }}
               className={`h-2 rounded-full transition-all cursor-pointer ${
-                heritageIndex === idx ? "w-6 bg-red-900" : "w-2 bg-stone-300 hover:bg-stone-400"
+                heritageIndex % heritageStories.length === idx ? "w-6 bg-red-900" : "w-2 bg-stone-300 hover:bg-stone-400"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
