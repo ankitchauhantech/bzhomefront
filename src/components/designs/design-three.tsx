@@ -100,33 +100,58 @@ export function DesignThree() {
         </div>
       </div>
 
-      {/* 2. Editorial Masthead Header with Official Logo */}
-      <header className="border-b-2 border-stone-900 pt-10 pb-8 container mx-auto px-4 text-center max-w-6xl">
-        <div className="flex items-center justify-between text-[11px] font-sans tracking-widest uppercase text-stone-600 border-b border-stone-300 pb-3 mb-6">
-          <span>Dallas, Texas • Est. by U.S. Military Veterans</span>
-          <span className="font-bold text-red-900">Bravo Zulu Homefront Alliance</span>
-          <span>Non-Profit Foundation Archive</span>
-        </div>
-
-        {/* Center Official Logo Emblem */}
-        <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-amber-600 shadow-lg bg-white p-1">
+      {/* 2. Editorial Top Banner with Background Image & Black Color Opacity Overlay */}
+      <header className="relative overflow-hidden w-full bg-black text-white py-14 sm:py-20 md:py-24 border-b-4 border-amber-600 shadow-2xl">
+        {/* Background Banner Image */}
+        <div className="absolute inset-0 z-0">
           <img
-            src="/logo.png"
-            alt={site.name}
-            className="w-full h-full object-contain"
+            src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=2000&q=80"
+            alt="Bravo Zulu Homefront Alliance Heritage Banner"
+            onError={(e) => {
+              e.currentTarget.src = "/images/site-images/48b2b89ba633dfbd50093fc837fcfbb4_1045x853_235x0_1280x853_crop.jpg";
+            }}
+            className="w-full h-full object-cover object-center scale-105"
           />
+          {/* Black Color Opacity Overlay */}
+          <div className="absolute inset-0 bg-black/75 backdrop-blur-[1px]" />
+          {/* Subtle gradient vignette */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80" />
         </div>
 
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-stone-950 uppercase font-serif">
-          Bravo Zulu Homefront
-        </h1>
+        {/* Banner Content Over Image - All in Crisp White Text */}
+        <div className="relative z-10 container mx-auto px-4 text-center max-w-6xl">
+          {/* Top metadata strip in White / Amber */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-sans tracking-widest uppercase text-white/80 border-b border-white/20 pb-3 mb-6 sm:mb-8 max-w-4xl mx-auto">
+            <span>Dallas, Texas • Est. by U.S. Military Veterans</span>
+            <span className="font-bold text-amber-400">Bravo Zulu Homefront Alliance</span>
+            <span>Non-Profit Foundation Archive</span>
+          </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-3 text-stone-700 italic text-sm sm:text-base">
-          <span>“Veterans Unite: Impact Beyond Service”</span>
-          <span>•</span>
-          <span>Strength • Unity • Service</span>
-          <span>•</span>
-          <span>Naval Signal: “Well Done”</span>
+          {/* Center Official Logo Emblem */}
+          <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-5 rounded-full overflow-hidden border-2 border-amber-400 shadow-2xl bg-white p-1 transition-transform hover:scale-105">
+            <img
+              src="/logo.png"
+              alt={site.name}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          {/* Headline in Bold White Text */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase font-serif drop-shadow-lg">
+            Bravo Zulu Homefront
+          </h1>
+
+          {/* Subtitle in White with Gold Accents */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 text-white/90 italic text-sm sm:text-base font-serif">
+            <span className="text-white drop-shadow">“Veterans Unite: Impact Beyond Service”</span>
+            <span className="text-amber-400 not-italic">•</span>
+            <span className="text-amber-300 font-bold not-italic drop-shadow">Strength • Unity • Service</span>
+            <span className="text-amber-400 not-italic">•</span>
+            <span className="text-white drop-shadow">Naval Signal: “Well Done”</span>
+          </div>
+
+          {/* Ornamental Divider */}
+          <div className="mt-6 mx-auto w-32 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
         </div>
       </header>
 
