@@ -159,46 +159,60 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">Full Name</label>
                       <input
-                        type="text"
                         required
-                        placeholder="Name*"
-                        className="w-full px-4 py-3.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#223788] focus:ring-1 focus:ring-[#223788] transition-colors"
+                        type="text"
+                        placeholder="e.g. John Miller"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:outline-none"
                       />
                     </div>
                     <div>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">Email Address</label>
                       <input
-                        type="email"
                         required
-                        placeholder="Email*"
-                        className="w-full px-4 py-3.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#223788] focus:ring-1 focus:ring-[#223788] transition-colors"
+                        type="email"
+                        placeholder="john@example.com"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:outline-none"
                       />
                     </div>
                   </div>
-
-                  <div>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Subject*"
-                      className="w-full px-4 py-3.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#223788] focus:ring-1 focus:ring-[#223788] transition-colors"
-                    />
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">Phone Number</label>
+                      <input
+                        required
+                        type="tel"
+                        placeholder="(469) 000-0000"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">Program of Interest</label>
+                      <select className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        <option>Texas Property Tax Exemption (Form 50-114)</option>
+                        <option>VA Disability Claims &amp; Rating Filing</option>
+                        <option>Camp Fort 24th Youth Horsemanship</option>
+                        <option>Honor Flight Application</option>
+                        <option>General Support / Volunteer</option>
+                      </select>
+                    </div>
                   </div>
-
                   <div>
+                    <label className="block text-xs font-bold text-slate-800 mb-1">Your Message or Inquiry</label>
                     <textarea
                       rows={4}
-                      placeholder="Your Message"
                       required
-                      className="w-full px-4 py-3.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#223788] focus:ring-1 focus:ring-[#223788] transition-colors resize-none"
+                      placeholder="How can our veteran officers assist you or your family?"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:outline-none"
                     />
                   </div>
-
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-lg font-black text-xs sm:text-sm uppercase tracking-wider bg-[#FF5E14] hover:bg-[#e05210] active:scale-[0.99] text-white transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider bg-slate-950 hover:bg-slate-800 text-white transition-all shadow-md flex items-center justify-center gap-2"
                   >
-                    <span>SEND A MESSAGE</span>
+                    <span>Submit Confidential Request</span>
+                    <ArrowRight className="w-4 h-4 text-amber-400" />
                   </button>
                 </form>
               )}
