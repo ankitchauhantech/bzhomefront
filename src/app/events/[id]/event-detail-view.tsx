@@ -8,6 +8,7 @@ import {
   Calendar,
   MapPin,
   ArrowLeft,
+  ArrowRight,
   CheckCircle2,
   ShieldCheck,
   PhoneCall,
@@ -29,6 +30,101 @@ export function EventDetailView({ event }: EventDetailViewProps) {
     e.currentTarget.src =
       "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1000&q=80";
   };
+
+  /* ========================================================
+     DESIGN VARIATION FOR LAYOUT 3 (Heritage Chronicle Style)
+     ======================================================== */
+  if (activeLayout === 3) {
+    return (
+      <div className="bg-[#FAF7F2] text-slate-900 min-h-screen py-12 md:py-16 font-serif">
+        <div className="container mx-auto px-4 max-w-5xl space-y-12">
+          {/* Top Back Link & Status */}
+          <div className="flex items-center justify-between border-b-2 border-stone-800 pb-4 font-sans">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-700 hover:text-red-900 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Layout 3 Homepage</span>
+            </Link>
+            <span
+              className={`px-3 py-1 rounded text-[11px] font-bold uppercase tracking-wider ${
+                isCurrent
+                  ? "bg-red-900 text-white"
+                  : "bg-stone-300 text-stone-800"
+              }`}
+            >
+              {event.tag} Chronicle
+            </span>
+          </div>
+
+          {/* Event Title Block */}
+          <div className="space-y-4">
+            <h1 className="text-3xl sm:text-5xl font-black text-stone-950 uppercase tracking-tight">
+              {event.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-6 text-xs text-stone-700 font-sans border-b border-stone-300 pb-4">
+              {event.date && (
+                <div className="flex items-center gap-1.5">
+                  <Calendar className="w-4 h-4 text-amber-700" />
+                  <span>{event.date}</span>
+                </div>
+              )}
+              {event.location && (
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-4 h-4 text-amber-700" />
+                  <span>{event.location}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Main Visual & Content */}
+          <div className="grid lg:grid-cols-12 gap-10 items-start font-sans">
+            <div className="lg:col-span-8 space-y-6">
+              <div className="rounded-2xl overflow-hidden border-2 border-stone-300 shadow-sm bg-white">
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  onError={handleImageFallback}
+                  className="w-full h-80 sm:h-96 object-cover"
+                />
+              </div>
+              <p className="text-base text-stone-800 leading-relaxed font-sans first-letter:float-left first-letter:text-5xl first-letter:pr-2 first-letter:font-bold first-letter:font-serif first-letter:text-red-950">
+                {event.summary}
+              </p>
+
+              {event.highlights && event.highlights.length > 0 && (
+                <div className="p-6 bg-white rounded-2xl border border-stone-300 space-y-3">
+                  <h3 className="font-serif font-bold text-lg text-stone-950">Event Highlights &amp; Field Impact</h3>
+                  <div className="grid sm:grid-cols-2 gap-2 text-xs text-stone-700">
+                    {event.highlights.map((h, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-red-900 shrink-0" />
+                        <span>{h}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="lg:col-span-4 bg-white p-6 rounded-2xl border-2 border-stone-300 shadow-sm space-y-4">
+              <h3 className="font-serif font-bold text-lg text-stone-950">Inquire About This Operation</h3>
+              <p className="text-xs text-stone-600">Contact our Dallas intake desk for event participation or volunteer inquiries.</p>
+              <Link
+                href="/contact"
+                className="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider bg-stone-950 hover:bg-stone-800 text-white flex items-center justify-center gap-2 shadow"
+              >
+                <span>Connect With Event Officer</span>
+                <ArrowRight className="w-4 h-4 text-amber-400" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   /* ========================================================
      DESIGN VARIATION FOR LAYOUT 2 (Editorial / Vanguard Style)

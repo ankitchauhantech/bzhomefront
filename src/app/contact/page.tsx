@@ -22,6 +22,154 @@ export default function Contact() {
   };
 
   /* ========================================================
+     LAYOUT 3 VARIATION (Heritage Commemorative Registry & Intake)
+     ======================================================== */
+  if (activeLayout === 3) {
+    return (
+      <div className="bg-[#FAF7F2] text-slate-900 min-h-screen py-16 font-serif">
+        <div className="container px-4 max-w-5xl mx-auto space-y-12">
+          <div className="text-center space-y-3 border-b-2 border-stone-800 pb-8">
+            <span className="text-[11px] font-sans font-bold uppercase tracking-widest text-red-900">
+              Official Organization Dispatch • Layout 3
+            </span>
+            <h1 className="text-4xl sm:text-6xl font-black text-stone-950 uppercase tracking-tight">
+              Alliance Intake &amp; Headquarters
+            </h1>
+            <p className="text-stone-700 italic text-sm sm:text-base max-w-2xl mx-auto">
+              Physical offices located at 3225 Martin Luther King Jr. Blvd in Dallas. Walk-ins and scheduled appointments welcome.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-10 items-start font-sans">
+            {/* Left Column: Organization Details */}
+            <div className="lg:col-span-5 p-8 rounded-2xl bg-white border-2 border-stone-300 shadow-sm space-y-6">
+              <div>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-900 border border-red-200">
+                  IRS 501(c)(19) Registry
+                </span>
+                <h3 className="text-2xl font-bold font-serif text-stone-950 mt-3">Dallas Headquarters</h3>
+                <p className="text-xs text-stone-600 mt-1">
+                  Bravo Zulu Homefront Alliance • Serving Texas Military Families
+                </p>
+              </div>
+
+              <div className="space-y-4 pt-4 border-t border-stone-200 text-xs text-stone-700">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block text-stone-900">Address:</strong>
+                    <span>{site.headquarters}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Phone className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block text-stone-900">Direct Helpline:</strong>
+                    <span>{site.phones[0]} | {site.phones[1]}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Mail className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block text-stone-900">Official Correspondence:</strong>
+                    <span>{site.email}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Clock className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block text-stone-900">Intake Desk Hours:</strong>
+                    <span>{site.hours}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Confidential Intake Form */}
+            <div className="lg:col-span-7 bg-white p-8 rounded-2xl border-2 border-stone-300 shadow-sm">
+              <h3 className="text-xl font-bold font-serif text-stone-950 mb-1">Confidential Veteran Intake Form</h3>
+              <p className="text-xs text-stone-600 mb-6">All information remains strictly privileged with veteran advocates.</p>
+
+              {submitted ? (
+                <div className="p-6 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
+                  <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
+                  <h4 className="font-bold text-emerald-950 font-serif">Inquiry Registered</h4>
+                  <p className="text-xs text-emerald-700">Our team will contact you within 24 business hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Full Name</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Veteran or Spouse"
+                        className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Phone Number</label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="(469) 000-0000"
+                        className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Email Address</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="veteran@example.com"
+                      className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Primary Inquiry Subject</label>
+                    <select className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                      <option>Texas Property Tax Exemption (Form 50-114)</option>
+                      <option>VA Disability Claims &amp; Records (DD-214)</option>
+                      <option>Incarcerated Veterans Re-Entry Assistance</option>
+                      <option>Honor Flight Nomination</option>
+                      <option>Camp Fort 24th Youth Encampment</option>
+                      <option>Peoples&apos; Memorial Cemetery Clean-Up</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Your Message or Case Summary</label>
+                    <textarea
+                      rows={4}
+                      placeholder="Please outline the support required..."
+                      className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-stone-950 hover:bg-stone-800 text-white transition-colors shadow flex items-center justify-center gap-2"
+                  >
+                    <span>Transmit Intake Form to Veteran Desk</span>
+                    <Send className="w-3.5 h-3.5 text-amber-400" />
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
      LAYOUT 2 VARIATION (Vanguard Editorial Contact Design)
      ======================================================== */
   if (activeLayout === 2) {

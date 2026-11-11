@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import { Layout, Sparkles, Check } from "lucide-react";
+import { Layout, Sparkles, Check, BookOpen } from "lucide-react";
 
 interface BottomLayoutSwitcherProps {
-  activeLayout: 1 | 2;
-  onSelectLayout: (layout: 1 | 2) => void;
+  activeLayout: 1 | 2 | 3;
+  onSelectLayout: (layout: 1 | 2 | 3) => void;
 }
 
 export function BottomLayoutSwitcher({
@@ -21,8 +21,14 @@ export function BottomLayoutSwitcher({
     {
       id: 2 as const,
       label: "Layout 2",
-      subtitle: "Hero Slider & Showcase",
+      subtitle: "Vanguard Video & News",
       icon: Layout,
+    },
+    {
+      id: 3 as const,
+      label: "Layout 3",
+      subtitle: "Heritage & Legal Archive",
+      icon: BookOpen,
     },
   ];
 

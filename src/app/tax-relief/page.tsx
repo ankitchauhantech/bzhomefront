@@ -20,6 +20,77 @@ export default function TaxReliefPage() {
   const { activeLayout } = useLayout();
 
   /* ========================================================
+     LAYOUT 3 VARIATION (Heritage Legal Chronicle - Property Tax Code)
+     ======================================================== */
+  if (activeLayout === 3) {
+    return (
+      <div className="bg-[#FAF7F2] text-slate-900 min-h-screen py-16 font-serif">
+        <div className="container px-4 max-w-6xl mx-auto space-y-16">
+          <div className="text-center space-y-3 border-b-2 border-stone-800 pb-8">
+            <span className="text-[11px] font-sans font-bold uppercase tracking-widest text-red-900">
+              Statutory Benefits Publication • Layout 3
+            </span>
+            <h1 className="text-4xl sm:text-6xl font-black text-stone-950 uppercase tracking-tight">
+              Texas Tax Code § 11.131
+            </h1>
+            <p className="text-stone-700 italic text-sm sm:text-base max-w-2xl mx-auto">
+              100% Homestead Property Tax Exemption Guidelines for Disabled Servicemembers and Surviving Spouses.
+            </p>
+          </div>
+
+          {/* Tiers Breakdown Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 font-sans">
+            {taxExemptionTiers.map((tier, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-2xl bg-white border-2 border-stone-300 shadow-sm flex flex-col justify-between"
+              >
+                <div className="space-y-3">
+                  <span className="text-[10px] font-bold text-red-900 bg-red-50 border border-red-200 px-2 py-0.5 rounded">
+                    {tier.rating}
+                  </span>
+                  <h3 className="text-lg font-bold font-serif text-stone-950">{tier.exemption}</h3>
+                  <p className="text-xs text-stone-600 leading-relaxed">{tier.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Filing Instructions Box */}
+          <div className="p-8 sm:p-10 rounded-2xl bg-white border-2 border-stone-300 shadow-sm space-y-6 font-sans">
+            <h3 className="text-2xl font-bold font-serif text-stone-950">
+              How To File Under Texas Comptroller Form 50-114
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6 text-xs text-stone-700">
+              <div className="space-y-2 p-4 rounded-xl bg-stone-50 border border-stone-200">
+                <span className="font-bold text-stone-900 block text-sm">Step 1: VA Summary Letter</span>
+                <p>Download your official VA Benefits Summary letter showing 100% P&amp;T or Individual Unemployability.</p>
+              </div>
+              <div className="space-y-2 p-4 rounded-xl bg-stone-50 border border-stone-200">
+                <span className="font-bold text-stone-900 block text-sm">Step 2: Complete Form 50-114</span>
+                <p>Attach your Texas driver license matching the primary homestead physical address.</p>
+              </div>
+              <div className="space-y-2 p-4 rounded-xl bg-stone-50 border border-stone-200">
+                <span className="font-bold text-stone-900 block text-sm">Step 3: Submit to County</span>
+                <p>Submit to Dallas County Appraisal District (DCAD) or local county by April 30th deadline.</p>
+              </div>
+            </div>
+            <div className="pt-2 text-center">
+              <Link
+                href="/contact?subject=PropertyTaxForm50114"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-stone-950 text-white hover:bg-stone-800 transition-colors shadow"
+              >
+                <span>Request BZ Advocate for Tax Filing Assistance</span>
+                <ArrowRight className="w-4 h-4 text-amber-400" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
      LAYOUT 2 VARIATION (Vanguard Editorial Tax Relief Guide)
      ======================================================== */
   if (activeLayout === 2) {

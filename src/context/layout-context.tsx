@@ -3,8 +3,8 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 interface LayoutContextType {
-  activeLayout: 1 | 2;
-  setActiveLayout: (layout: 1 | 2) => void;
+  activeLayout: 1 | 2 | 3;
+  setActiveLayout: (layout: 1 | 2 | 3) => void;
 }
 
 const LayoutContext = createContext<LayoutContextType>({
@@ -13,7 +13,7 @@ const LayoutContext = createContext<LayoutContextType>({
 });
 
 export function LayoutProvider({ children }: { children: React.ReactNode }) {
-  const [activeLayout, setActiveLayoutState] = useState<1 | 2>(2);
+  const [activeLayout, setActiveLayoutState] = useState<1 | 2 | 3>(2);
 
   useEffect(() => {
     // Check URL or localStorage on mount
@@ -24,16 +24,18 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
         setActiveLayoutState(1);
       } else if (urlLayout === "2") {
         setActiveLayoutState(2);
+      } else if (urlLayout === "3") {
+        setActiveLayoutState(3);
       } else {
         const saved = localStorage.getItem("bz_active_layout");
-        if (saved === "1" || saved === "2") {
-          setActiveLayoutState(Number(saved) as 1 | 2);
+        if (saved === "1" || saved === "2" || saved === "3") {
+          setActiveLayoutState(Number(saved) as 1 | 2 | 3);
         }
       }
     }
   }, []);
 
-  const setActiveLayout = (layout: 1 | 2) => {
+  const setActiveLayout = (layout: 1 | 2 | 3) => {
     setActiveLayoutState(layout);
     if (typeof window !== "undefined") {
       localStorage.setItem("bz_active_layout", String(layout));

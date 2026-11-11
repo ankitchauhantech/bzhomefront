@@ -31,6 +31,171 @@ export default function About() {
   };
 
   /* ========================================================
+     LAYOUT 3 VARIATION (Heritage Commemorative Chronicle)
+     ======================================================== */
+  if (activeLayout === 3) {
+    return (
+      <div className="bg-[#FAF7F2] text-slate-900 min-h-screen py-16 font-serif">
+        <div className="container px-4 max-w-5xl mx-auto space-y-16">
+          {/* Masthead Header */}
+          <div className="text-center space-y-3 border-b-2 border-stone-800 pb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded text-xs font-sans font-bold uppercase tracking-widest bg-stone-200 text-stone-800 border border-stone-300">
+              <ShieldCheck className="w-4 h-4 text-red-900" /> Layout 3 • Commemorative Chronicle
+            </div>
+            <h1 className="text-4xl sm:text-6xl font-black text-stone-950 uppercase tracking-tight">
+              About Bravo Zulu Alliance
+            </h1>
+            <p className="text-stone-700 italic text-base font-serif">
+              “{site.motto}” • Duty • Honor • Community Restoration
+            </p>
+          </div>
+
+          {/* Chronicle Hero: Founders' Philosophy */}
+          <div className="grid md:grid-cols-12 gap-8 items-start bg-white p-6 sm:p-10 rounded-2xl border-2 border-stone-300 shadow-sm font-sans">
+            <div className="md:col-span-5 rounded-xl overflow-hidden aspect-[4/5] bg-stone-100 border border-stone-300">
+              <img
+                src={aboutImages[0].url}
+                alt={aboutImages[0].title}
+                onError={(e) => handleImageFallback(e, aboutImages[0].fallbackUrl)}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="md:col-span-7 space-y-4">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-red-900 block font-sans">
+                Founders&apos; Chronicle • Dallas, TX
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-950">
+                Founded By Veterans, Operated By Veterans
+              </h2>
+              <p className="text-stone-700 leading-relaxed text-sm sm:text-base font-sans first-letter:float-left first-letter:text-5xl first-letter:pr-2 first-letter:font-bold first-letter:font-serif first-letter:text-red-950">
+                When a military servicemember returns to civilian society, their mission does not end. Neither does our duty to ensure they hear the naval signal <strong className="font-serif text-red-950">“Bravo Zulu” (Well Done)</strong> through secured VA disability compensation, Texas property tax exemptions, employment dignity, and family support.
+              </p>
+              <div className="p-4 rounded-xl bg-[#FAF7F2] border border-stone-300 space-y-2 text-xs text-stone-700">
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-red-900 shrink-0 stroke-[3]" />
+                  <span><strong>Naval Expression:</strong> “Bravo Zulu” (BZ) conveys “Well Done” across naval signaling flags.</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-red-900 shrink-0 stroke-[3]" />
+                  <span><strong>501(c)(19) Registry:</strong> Official IRS certified veterans non-profit organization.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Four Core Pillars of Service */}
+          <div className="space-y-6">
+            <div className="text-center space-y-1">
+              <span className="text-xs font-sans font-bold uppercase tracking-widest text-red-900">
+                Alliance Initiatives
+              </span>
+              <h3 className="text-2xl font-bold text-stone-950">Four Pillars of Veteran Impact</h3>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-6 font-sans">
+              <div className="p-6 bg-white rounded-2xl border border-stone-300 shadow-sm space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <h4 className="font-serif font-bold text-lg text-stone-950">Veteran Help Center</h4>
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  Assisting with military records (DD-214), VA disability ratings, healthcare registration, and personal financial budgeting.
+                </p>
+              </div>
+
+              <div className="p-6 bg-white rounded-2xl border border-stone-300 shadow-sm space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold">
+                  <UserCheck className="w-5 h-5" />
+                </div>
+                <h4 className="font-serif font-bold text-lg text-stone-950">Justice &amp; Re-Entry</h4>
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  Dedicated post-release support: securing state IDs, replacement Social Security cards, bank accounts, and fair-chance jobs.
+                </p>
+              </div>
+
+              <div className="p-6 bg-white rounded-2xl border border-stone-300 shadow-sm space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-900 flex items-center justify-center font-bold">
+                  <Plane className="w-5 h-5" />
+                </div>
+                <h4 className="font-serif font-bold text-lg text-stone-950">Honor Flights Network</h4>
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  All-expenses-paid memorial flights to Washington D.C. honoring WWII, Korean War, and Vietnam War veterans.
+                </p>
+              </div>
+
+              <div className="p-6 bg-white rounded-2xl border border-stone-300 shadow-sm space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold">
+                  <Landmark className="w-5 h-5" />
+                </div>
+                <h4 className="font-serif font-bold text-lg text-stone-950">Buffalo Soldiers &amp; Youth</h4>
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  Camp Fort 24th youth equestrian training and caretaking the resting grounds of 600 fallen heroes at Peoples&apos; Memorial Cemetery.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Living History Archive Strip */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between font-sans">
+              <span className="text-xs font-bold uppercase tracking-widest text-red-900">
+                Official Archive Photography
+              </span>
+              <Link href="/gallery" className="text-xs font-bold text-red-900 hover:underline inline-flex items-center gap-1">
+                <span>View Full Photo Archive</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {aboutImages.slice(4, 8).map((img, idx) => (
+                <div key={idx} className="rounded-xl overflow-hidden aspect-[4/3] bg-white border border-stone-300 shadow-sm">
+                  <img
+                    src={img.url}
+                    alt={img.title}
+                    onError={(e) => handleImageFallback(e, img.fallbackUrl)}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Stats Bar */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center font-sans">
+            {stats.map((s, idx) => (
+              <div key={idx} className="p-5 rounded-2xl bg-white border border-stone-300 shadow-sm">
+                <p className="text-2xl sm:text-3xl font-extrabold text-red-950 font-serif">{s.value}</p>
+                <p className="text-xs font-bold text-stone-900 mt-1">{s.label}</p>
+                <p className="text-[11px] text-stone-500 mt-0.5">{s.subtext}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Headquarters Dispatch Box */}
+          <div className="p-8 sm:p-10 rounded-2xl bg-stone-900 text-white text-center space-y-4 shadow-xl font-sans">
+            <MapPin className="w-8 h-8 text-amber-400 mx-auto" />
+            <h3 className="text-2xl font-bold font-serif text-white">Visit Our Dallas Headquarters</h3>
+            <p className="text-sm text-stone-300 max-w-xl mx-auto">
+              {site.headquarters} • Open Monday through Friday from 9:00 AM to 5:00 PM CST.
+            </p>
+            <p className="text-xs text-amber-300 font-mono">
+              Helpline: {site.phones[0]} | Alternate: {site.phones[1]}
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md"
+              >
+                <span>Connect With A Veteran Officer</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
      LAYOUT 2 VARIATION (Vanguard Editorial Design)
      ======================================================== */
   if (activeLayout === 2) {

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { DesignTwo } from "@/components/designs/design-two";
+import { DesignThree } from "@/components/designs/design-three";
 
 export default function DesignThreePage() {
-  return <DesignTwo />;
+  return <DesignThree />;
 }

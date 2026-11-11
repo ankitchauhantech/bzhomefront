@@ -31,6 +31,70 @@ export default function ServicesPage() {
   };
 
   /* ========================================================
+     LAYOUT 3 VARIATION (Heritage Legal & Benefits Portfolio)
+     ======================================================== */
+  if (activeLayout === 3) {
+    return (
+      <div className="bg-[#FAF7F2] text-slate-900 min-h-screen py-16 font-serif">
+        <div className="container px-4 max-w-6xl mx-auto space-y-16">
+          <div className="text-center space-y-3 border-b-2 border-stone-800 pb-8">
+            <span className="text-[11px] font-sans font-bold uppercase tracking-widest text-red-900">
+              Legal Advocacy &amp; Benefits Portfolio • Layout 3
+            </span>
+            <h1 className="text-4xl sm:text-6xl font-black text-stone-950 uppercase tracking-tight">
+              Veterans Advocacy &amp; Programs
+            </h1>
+            <p className="text-stone-700 italic text-sm sm:text-base max-w-2xl mx-auto">
+              Statutory assistance, VA ratings appeals, homestead tax waivers, and community re-entry programs.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 font-sans">
+            {services.map((srv) => (
+              <div
+                key={srv.id}
+                className="bg-white rounded-2xl p-6 sm:p-8 border-2 border-stone-300 shadow-sm flex flex-col justify-between"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="w-12 h-12 rounded-xl bg-stone-100 border border-stone-300 flex items-center justify-center">
+                      {iconMap[srv.iconName]}
+                    </div>
+                    <span className="text-[10px] font-bold text-red-900 bg-red-50 border border-red-200 px-2 py-0.5 rounded">
+                      {srv.badge}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold font-serif text-stone-950">{srv.title}</h3>
+                  <p className="text-xs text-stone-600 leading-relaxed">{srv.description}</p>
+
+                  <ul className="space-y-1.5 pt-2 border-t border-stone-100 text-xs text-stone-700">
+                    {srv.bullets.map((b, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-red-900 shrink-0" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-6">
+                  <Link
+                    href={srv.link}
+                    className="w-full py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-stone-950 hover:bg-stone-800 text-white transition-colors flex items-center justify-center gap-2 shadow"
+                  >
+                    <span>{srv.actionText}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
      LAYOUT 2 VARIATION (Vanguard Editorial Services Layout)
      ======================================================== */
   if (activeLayout === 2) {

@@ -27,6 +27,73 @@ export default function Gallery() {
         );
 
   /* ========================================================
+     LAYOUT 3 VARIATION (Heritage Archival Gallery)
+     ======================================================== */
+  if (activeLayout === 3) {
+    return (
+      <div className="bg-[#FAF7F2] text-slate-900 min-h-screen py-16 font-serif">
+        <div className="container px-4 max-w-6xl mx-auto space-y-12">
+          {/* Masthead Header */}
+          <div className="text-center space-y-3 border-b-2 border-stone-800 pb-8">
+            <span className="text-[11px] font-sans font-bold uppercase tracking-widest text-red-900">
+              Official Media Archive • Layout 3 Heritage Edition
+            </span>
+            <h1 className="text-4xl sm:text-6xl font-black text-stone-950 uppercase tracking-tight">
+              Living History Photographic Archive
+            </h1>
+            <p className="text-stone-700 italic text-sm sm:text-base max-w-2xl mx-auto">
+              Preserved photographic plates documenting field operations, Buffalo Soldiers living history, and cemetery restoration in North Texas.
+            </p>
+
+            {/* Filter Pills */}
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-4 font-sans">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    selectedCategory === cat
+                      ? "bg-red-950 text-white shadow-md"
+                      : "bg-white text-stone-700 border border-stone-300 hover:bg-stone-100"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Lightbox Gallery Grid */}
+          <LightboxGallery images={filteredImages} columns={4} />
+
+          {/* Archival Contribution Box */}
+          <div className="p-8 sm:p-10 rounded-2xl bg-white border-2 border-stone-300 shadow-sm text-center max-w-2xl mx-auto space-y-4 font-sans">
+            <div className="w-12 h-12 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center mx-auto text-amber-800">
+              <Camera className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-bold font-serif text-stone-950">
+              Submit Historic Photographs or Artifacts
+            </h3>
+            <p className="text-xs text-stone-600 leading-relaxed">
+              Have family records, historical photographs of North Texas veterans, or Buffalo Soldiers memorabilia? Contribute to our permanent digital repository.
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-stone-950 text-white hover:bg-stone-800 transition-colors shadow-sm"
+              >
+                <span>Contact Archival Desk</span>
+                <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
      LAYOUT 2 VARIATION (Vanguard Editorial Gallery)
      ======================================================== */
   if (activeLayout === 2) {
