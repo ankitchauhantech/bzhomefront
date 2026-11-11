@@ -22,6 +22,11 @@ import {
   Landmark,
   Clock,
   Send,
+  Headphones,
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
 } from "lucide-react";
 import { LightboxGallery } from "@/components/lightbox-gallery";
 
@@ -470,97 +475,189 @@ export function DesignThree() {
         </div>
       </section>
 
-      {/* 8. Contact Intake Desk Section */}
-      <section className="py-16 bg-white border-t border-stone-300 font-sans">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-red-900">
-                Direct Intake Desk
-              </span>
-              <h2 className="text-3xl font-bold font-serif text-stone-950">
-                Connect With A Veteran Service Officer
-              </h2>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                Confidential assistance with property tax exemptions, VA claims, re-entry paperwork, and youth horsemanship enrollments.
+      {/* 8. Contact Intake Desk Section - Custom #223788 Layout */}
+      <section className="py-16 md:py-24 bg-[#223788] text-white font-sans relative overflow-hidden">
+        {/* Subtle dot matrix pattern overlay */}
+        <div 
+          className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle, #ffffff 1.5px, transparent 1.5px)`,
+            backgroundSize: "24px 24px"
+          }}
+        />
+
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left Column: Info & Socials */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="space-y-2">
+                <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-amber-300">
+                  <span className="text-[10px]">▲</span> CONTACT US
+                </span>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+                  Need a Quick Query?
+                </h2>
+              </div>
+
+              <p className="text-white/80 text-sm sm:text-base leading-relaxed">
+                Have questions regarding Texas property tax exemptions (Form 50-114), VA disability claims, DD-214 records, or our Buffalo Soldiers youth camps? Reach out directly to our Dallas veteran service team.
               </p>
 
-              <div className="space-y-3 pt-2 text-xs text-stone-700">
-                <div className="flex items-center gap-3">
-                  <MapPin className="w-4 h-4 text-amber-700 shrink-0" />
-                  <span>3225 Martin Luther King Jr. Blvd, Suite 130, Dallas, TX</span>
+              {/* Contact rows with dividers */}
+              <div className="space-y-5 pt-2">
+                {/* 1. Contact Number */}
+                <div className="flex items-start gap-4 pb-4 border-b border-white/20">
+                  <div className="w-11 h-11 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-white">
+                    <Headphones className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <p className="text-sm font-bold text-white tracking-wide">Contact Number</p>
+                    <p className="text-xs sm:text-sm text-white/85 font-medium">
+                      +1 (469) 268-4147 / +1 (682) 882-0508
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-amber-700 shrink-0" />
-                  <span>(469) 268-4147 | (682) 882-0508</span>
+
+                {/* 2. Our Emails */}
+                <div className="flex items-start gap-4 pb-4 border-b border-white/20">
+                  <div className="w-11 h-11 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-white">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <p className="text-sm font-bold text-white tracking-wide">Our Emails</p>
+                    <p className="text-xs sm:text-sm text-white/85 font-medium">
+                      info@bzhomefront.org - support@bzhomefront.org
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Clock className="w-4 h-4 text-amber-700 shrink-0" />
-                  <span>Mon - Fri: 9:00 AM - 5:00 PM CST</span>
+
+                {/* 3. Our Location */}
+                <div className="flex items-start gap-4 pb-4 border-b border-white/20">
+                  <div className="w-11 h-11 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-white">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <p className="text-sm font-bold text-white tracking-wide">Our Location</p>
+                    <p className="text-xs sm:text-sm text-white/85 font-medium leading-relaxed">
+                      3225 Martin Luther King Jr. Blvd, Suite 130, Dallas, TX 75210
+                    </p>
+                  </div>
                 </div>
+              </div>
+
+              {/* Social Media Pills */}
+              <div className="flex items-center gap-3 pt-2">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-all transform hover:scale-105"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-4 h-4 fill-current" />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-all transform hover:scale-105"
+                  aria-label="Twitter / X"
+                >
+                  <Twitter className="w-4 h-4 fill-current" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-all transform hover:scale-105"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-all transform hover:scale-105"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="w-4 h-4" />
+                </a>
               </div>
             </div>
 
-            <div className="lg:col-span-7 bg-[#FAF7F2] p-6 sm:p-8 rounded-3xl border border-stone-300 shadow-sm">
+            {/* Right Column: Floating Crisp White Form Card */}
+            <div className="lg:col-span-7 bg-white text-slate-900 rounded-3xl p-8 sm:p-10 lg:p-12 shadow-2xl border border-white/20">
+              <div className="text-center space-y-2 mb-8">
+                <span className="inline-flex items-center gap-1 text-xs font-black uppercase tracking-widest text-[#223788]">
+                  <span className="text-[10px]">▲</span> GET TO KNOW US
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
+                  How May We Help You!
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+                  Submit your request directly to our veteran desk for immediate assistance with benefits, claims, memorial honors, and youth programs.
+                </p>
+              </div>
+
               {formSubmitted ? (
-                <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
-                  <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
-                  <h4 className="font-bold text-emerald-950 font-serif">Inquiry Submitted Successfully</h4>
-                  <p className="text-xs text-emerald-700">A BZ Alliance veteran intake officer will review your message shortly.</p>
+                <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
+                  <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
+                  <h4 className="font-black text-emerald-950 text-lg">Inquiry Submitted Successfully</h4>
+                  <p className="text-xs sm:text-sm text-emerald-700">
+                    A BZ Alliance veteran intake officer will review your request and get back to you within 24 hours.
+                  </p>
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Full Name</label>
                       <input
                         type="text"
                         required
-                        placeholder="Veteran or Family Member"
-                        className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                        placeholder="Name*"
+                        className="w-full px-4 py-3.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#223788] focus:ring-1 focus:ring-[#223788] transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Phone Number</label>
                       <input
-                        type="tel"
+                        type="email"
                         required
-                        placeholder="(469) 000-0000"
-                        className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                        placeholder="Email*"
+                        className="w-full px-4 py-3.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#223788] focus:ring-1 focus:ring-[#223788] transition-colors"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Service or Program</label>
-                    <select className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                      <option>Texas Property Tax Exemption (Form 50-114)</option>
-                      <option>VA Claims &amp; DD-214 Retrieval</option>
-                      <option>Incarcerated Veterans Re-Entry Support</option>
-                      <option>Honor Flight Nomination</option>
-                      <option>Camp Fort 24th Youth Encampment</option>
-                    </select>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Subject*"
+                      className="w-full px-4 py-3.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#223788] focus:ring-1 focus:ring-[#223788] transition-colors"
+                    />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-stone-700 uppercase mb-1">How can we assist you?</label>
                     <textarea
-                      rows={3}
-                      placeholder="Share details regarding your request..."
-                      className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                      rows={4}
+                      placeholder="Your Message"
+                      required
+                      className="w-full px-4 py-3.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#223788] focus:ring-1 focus:ring-[#223788] transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-stone-950 hover:bg-stone-800 text-white transition-colors shadow flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-lg font-black text-xs sm:text-sm uppercase tracking-wider bg-[#FF5E14] hover:bg-[#e05210] active:scale-[0.99] text-white transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Submit Request to Veteran Desk</span>
-                    <Send className="w-3.5 h-3.5 text-amber-400" />
+                    <span>SEND A MESSAGE</span>
                   </button>
                 </form>
               )}
             </div>
+
           </div>
         </div>
       </section>
