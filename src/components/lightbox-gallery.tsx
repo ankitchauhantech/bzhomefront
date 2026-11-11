@@ -28,6 +28,15 @@ export function LightboxGallery({ images = galleryImages, columns = 4, slider = 
 
   const maxSliderIndex = Math.max(0, images.length - itemsPerView);
 
+  // Autoplay for Gallery Slider
+  useEffect(() => {
+    if (!slider) return;
+    const timer = setInterval(() => {
+      setSliderIndex((prev) => (prev < maxSliderIndex ? prev + 1 : 0));
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [slider, maxSliderIndex]);
+
   const nextSlide = () => {
     setSliderIndex((prev) => (prev < maxSliderIndex ? prev + 1 : 0));
   };
@@ -74,33 +83,8 @@ export function LightboxGallery({ images = galleryImages, columns = 4, slider = 
   return (
     <div>
       {slider ? (
-        /* Slider Mode: 4 images at a time, scroll 1 by 1 */
+        /* Slider Mode: 4 images at a time, autoplay scroll 1 by 1 */
         <div className="space-y-4">
-          {/* Controls bar */}
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-stone-600">
-              Showing {sliderIndex + 1} - {Math.min(sliderIndex + itemsPerView, images.length)} of {images.length} Photos
-            </span>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={prevSlide}
-                aria-label="Previous image"
-                className="w-9 h-9 rounded-full bg-white border border-stone-300 shadow-sm hover:bg-stone-100 active:scale-95 flex items-center justify-center text-stone-800 transition-all cursor-pointer"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                onClick={nextSlide}
-                aria-label="Next image"
-                className="w-9 h-9 rounded-full bg-white border border-stone-300 shadow-sm hover:bg-stone-100 active:scale-95 flex items-center justify-center text-stone-800 transition-all cursor-pointer"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
           {/* Slider track viewport */}
           <div className="overflow-hidden rounded-2xl">
             <div

@@ -89,6 +89,14 @@ export function DesignThree() {
 
   const maxHeritageIndex = Math.max(0, heritageStories.length - heritagePerView);
 
+  // Autoplay for Preserving Valor 5-Card Slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeritageIndex((prev) => (prev < maxHeritageIndex ? prev + 1 : 0));
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [maxHeritageIndex]);
+
   const benefitsFaq = [
     {
       q: "How does the Texas 100% Disabled Veteran Homestead Exemption work?",
@@ -375,43 +383,18 @@ export function DesignThree() {
         </div>
       </section>
 
-      {/* 5. Living History & Heritage Section (5 Cards Slider - Scrolls 1 by 1) */}
+      {/* 5. Living History & Heritage Section (5 Cards Autoplay Slider) */}
       <section className="py-16 container mx-auto px-4 max-w-6xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          <div className="space-y-2">
-            <span className="text-xs font-sans font-bold uppercase tracking-widest text-red-900">
-              Living History In Action
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-stone-950 font-serif">
-              Preserving Valor, Educating the Next Generation
-            </h2>
-            <p className="text-stone-600 text-sm font-sans max-w-xl">
-              Our mission carries forward the storied legacy of the Buffalo Soldiers, honors those laid to rest in sacred Texas soil, and uplifts veterans across the state.
-            </p>
-          </div>
-
-          {/* Slider Controls */}
-          <div className="flex items-center gap-3 shrink-0">
-            <span className="text-xs font-bold text-stone-600 font-sans">
-              {heritageIndex + 1} - {Math.min(heritageIndex + heritagePerView, heritageStories.length)} of {heritageStories.length}
-            </span>
-            <button
-              type="button"
-              onClick={() => setHeritageIndex((prev) => (prev > 0 ? prev - 1 : maxHeritageIndex))}
-              aria-label="Previous card"
-              className="w-10 h-10 rounded-full bg-white border border-stone-300 shadow-sm hover:bg-stone-100 active:scale-95 flex items-center justify-center text-stone-800 transition-all cursor-pointer"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => setHeritageIndex((prev) => (prev < maxHeritageIndex ? prev + 1 : 0))}
-              aria-label="Next card"
-              className="w-10 h-10 rounded-full bg-white border border-stone-300 shadow-sm hover:bg-stone-100 active:scale-95 flex items-center justify-center text-stone-800 transition-all cursor-pointer"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+        <div className="text-center mb-10 space-y-2 max-w-2xl mx-auto">
+          <span className="text-xs font-sans font-bold uppercase tracking-widest text-red-900">
+            Living History In Action
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-stone-950 font-serif">
+            Preserving Valor, Educating the Next Generation
+          </h2>
+          <p className="text-stone-600 text-sm font-sans">
+            Our mission carries forward the storied legacy of the Buffalo Soldiers, honors those laid to rest in sacred Texas soil, and uplifts veterans across the state.
+          </p>
         </div>
 
         {/* 5-Card Slider Viewport & Track */}
