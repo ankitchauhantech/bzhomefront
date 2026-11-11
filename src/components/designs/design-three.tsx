@@ -37,16 +37,19 @@ export function DesignThree() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [heritageIndex, setHeritageIndex] = useState(0);
   const [heritagePerView, setHeritagePerView] = useState(3);
+  const [eventIndex, setEventIndex] = useState(0);
+  const [eventPerView, setEventPerView] = useState(3);
 
   useEffect(() => {
-    const updateHeritagePerView = () => {
-      if (window.innerWidth < 640) setHeritagePerView(1);
-      else if (window.innerWidth < 1024) setHeritagePerView(2);
-      else setHeritagePerView(3);
+    const updatePerView = () => {
+      const w = window.innerWidth;
+      const count = w < 640 ? 1 : w < 1024 ? 2 : 3;
+      setHeritagePerView(count);
+      setEventPerView(count);
     };
-    updateHeritagePerView();
-    window.addEventListener("resize", updateHeritagePerView);
-    return () => window.removeEventListener("resize", updateHeritagePerView);
+    updatePerView();
+    window.addEventListener("resize", updatePerView);
+    return () => window.removeEventListener("resize", updatePerView);
   }, []);
 
   const heritageStories = [
@@ -88,6 +91,7 @@ export function DesignThree() {
   ];
 
   const maxHeritageIndex = Math.max(0, heritageStories.length - heritagePerView);
+  const maxEventIndex = Math.max(0, events.length - eventPerView);
 
   // Autoplay for Preserving Valor 5-Card Slider
   useEffect(() => {
@@ -96,6 +100,14 @@ export function DesignThree() {
     }, 3500);
     return () => clearInterval(timer);
   }, [maxHeritageIndex]);
+
+  // Autoplay for Community Events Slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setEventIndex((prev) => (prev < maxEventIndex ? prev + 1 : 0));
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [maxEventIndex]);
 
   const benefitsFaq = [
     {
@@ -379,6 +391,97 @@ export function DesignThree() {
                 Camp Fort 24th youth horsemanship encampments and caretaking 600 fallen heroes at Peoples&apos; Memorial.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Activities & Programs: Community Events Current & Past (Autoplay Slider) */}
+      <section className="py-16 bg-[#FBF9F5] border-t border-b border-stone-300 font-sans">
+        <div className="container mx-auto px-4 max-w-6xl space-y-10">
+          <div className="text-center space-y-2 max-w-2xl mx-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-red-900">
+              Activities &amp; Programs
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-stone-950 font-serif">
+              Community Events: Current &amp; Past
+            </h2>
+            <p className="text-stone-600 text-sm leading-relaxed">
+              Click on any event card below to open its dedicated event story and photo gallery.
+            </p>
+          </div>
+
+          {/* Autoplay Event Cards Slider Viewport */}
+          <div className="overflow-hidden rounded-3xl">
+            <div
+              className="flex transition-transform duration-500 ease-out -mx-3"
+              style={{
+                transform: `translateX(-${eventIndex * (100 / eventPerView)}%)`,
+              }}
+            >
+              {events.map((evt) => (
+                <div
+                  key={evt.id}
+                  style={{ width: `${100 / eventPerView}%` }}
+                  className="shrink-0 px-3"
+                >
+                  <Link
+                    href={`/events/${evt.id}`}
+                    className="rounded-3xl overflow-hidden bg-white border border-stone-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between h-full group cursor-pointer"
+                  >
+                    <div>
+                      <div className="relative h-52 overflow-hidden bg-stone-100">
+                        <img
+                          src={evt.image}
+                          alt={evt.title}
+                          onError={(e) => {
+                            e.currentTarget.src =
+                              "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80";
+                          }}
+                          loading="lazy"
+                          className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
+                        />
+                        <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500 text-slate-950 border border-amber-300 shadow">
+                          {evt.tag || "Alliance Event"}
+                        </span>
+                      </div>
+
+                      <div className="p-6 space-y-2.5">
+                        <div className="flex items-center gap-2 text-xs text-amber-800 font-semibold">
+                          <Calendar className="w-3.5 h-3.5" />
+                          <span>{evt.date}</span>
+                        </div>
+                        <h3 className="text-lg font-bold font-serif text-slate-950 leading-snug group-hover:text-amber-700 transition-colors">
+                          {evt.title}
+                        </h3>
+                        <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                          {evt.summary}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="p-6 pt-0 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-amber-800">
+                      <span>View Event Details</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom Pagination Dots */}
+          <div className="flex items-center justify-center gap-1.5 pt-2">
+            {Array.from({ length: maxEventIndex + 1 }).map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setEventIndex(idx)}
+                className={`h-2 rounded-full transition-all cursor-pointer ${
+                  eventIndex === idx ? "w-6 bg-red-900" : "w-2 bg-stone-300 hover:bg-stone-400"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
